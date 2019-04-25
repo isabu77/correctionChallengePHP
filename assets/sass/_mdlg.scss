@@ -1,0 +1,75 @@
+@media (min-width: 768px) {
+  body {
+    .menu {
+      .burger {
+        display: none;
+      }
+      nav {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        height: initial;
+        & > * {
+          font-size: 1.3vw;        }
+        ul {
+          display: flex;
+          justify-content: space-around;
+        }
+      }
+    }
+  }
+  /* PAGE HOME */
+  section {
+    h1 {
+      font-size: 3vw;
+    }
+    h2 {
+      font-size: 2.5vw;
+    }
+    article {
+      flex-direction: row!important;
+      width: 80%!important;
+      margin-left: 10%;
+      div {
+        width: 40%;
+        img {
+          width: 100%;
+          margin: 0;
+        }
+      }
+      p {
+        margin-left:10%!important;
+        width: 50%!important;
+      }
+    }
+  }
+  /* FIN PAGE HOME
+    PAGE BOUTIQUES */
+    #boutiques {
+      display: flex;
+      flex-wrap: wrap;
+      .bieres {
+        width: 33%!important;
+        margin-left: 0;
+        div {
+          margin-left: 15%!important;
+          img {
+            margin-left: 70%!important;
+          }
+        }
+        p {
+          width: 80%!important;
+        }
+      }
+    }
+
+  /* FOOTER */
+  footer {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    nav {
+      width: 100%;
+    }
+  }
+}
