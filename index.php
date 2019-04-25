@@ -4,7 +4,7 @@
 		<h2>Welcome!</h2>
 		<article class="articleHome">
 			<div>
-				<img src="/assets/img/LogoConsotopia_RVB.jpg" alt="Consotopia logo">
+				<img src="/assets/img/BAP.jpg" alt="BAP logo">
 			</div>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -21,7 +21,7 @@
 		</article>
 		<article class="articleHome">
 			<div>
-				<img src="/assets/img/LogoConsotopia_RVB.jpg" alt="Consotopia logo">
+				<img src="/assets/img/BAP.jpg" alt="BAP logo">
 			</div>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

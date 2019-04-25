@@ -2,6 +2,7 @@
 	require_once('ressources/donnees.php');
 	include 'includes/header.php';
 ?>
+
 <h1 class="titreduhaut">Nos Produits</h1>
 <section id="boutiques">
 	<?php foreach($beerArray as $value) : ?>

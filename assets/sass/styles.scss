@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
 body {
 	.titreduhaut {
 		text-align: center;
 	}
 	/* HEADER */
-	font-family: 'Raleway', sans-serif;
 	.menu {
 		background-color: #2196F3;
 		color: #FFFFFF;
@@ -108,9 +106,40 @@ body {
 			}
 		}
 	}
+	/*FIN BOUTIQUE
+		PURCHASE_ORDER */
+
+	#formPurchase {
+		.form {
+			label {
+				display: block;
+			}
+			input {
+				width: 100%;
+				border: 1px solid black;
+			}
+		}
+	}
+
+	/* FIN PURCHASE_ORDER
+		CONFIRMATION DE COMMANDE */
+	#commandSection {
+		table {
+			width: 100%;
+			tr {
+				th {
+					font-family: initial;
+				}
+				td {
+					text-align: center;
+				}
+			}
+		}
+	}
 	/*FOOTER */
 	footer {
 		background-color: #2196F3;
+		line-height: 20px;
 		nav {
 			ul {
 				list-style: none;

@@ -62,8 +62,23 @@
         }
       }
     }
+  /* PURCHASE_ORDER */
 
-  /* FOOTER */
+  #formPurchase {
+    width: 33%;
+    margin-top: 5%;
+    margin-left: 33%;
+    margin-bottom: 5%;
+    .form_row {
+      display: flex;
+      justify-content: space-between;
+    }
+    table {
+      width: 100%;
+    }
+  }
+  /* FIN PURCHASE_ORDER
+   FOOTER */
   footer {
     height: 5vh;
     display: flex;

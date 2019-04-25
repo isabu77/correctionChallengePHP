@@ -1,26 +1,3 @@
-<?php
-
-if(isset($_POST['mail'])) {
-	include ('../ressources/donnees.php');
-
-	$beerTotal = $beerArray;
-
-	$commande = [];
-	foreach($_POST['qty'] as $key => $value) {
-		if($value > 0) {
-			$beerTotal[$key][3] = $beerTotal[$key][3]*$value;
-			$beerTotal[$key][4] = $value;
-			array_push($commande, $beerTotal[$key]);
-		}
-	}
-
-	$totalTTC = 0;
-	foreach ($commande as $key => $value) {
-		$totalTTC += $value[3];
-	}
-}
-
-include '../includes/header.php'; ?>
 <h1 class="titreduhaut">Confirmation de commande</h1>
 <section id="commandSection">
 	<table>
@@ -30,6 +7,7 @@ include '../includes/header.php'; ?>
 				<th>Prix HT</th>
 				<th>Prix TTC</th>
 				<th>Quantité</th>
+				<th>Total TTC</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,13 +17,15 @@ include '../includes/header.php'; ?>
 					<td><?= number_format($value[3], 2, ',', '.'); ?>€</td>
 					<td><?= number_format($value[3]*$tva, 2, ',', '.');  ?>€</td>
 					<td><?= $value[4] ?></td>
+					<td><?= number_format($value[5]*$tva, 2, ',', '.'); ?>€</td>
 				</tr>
 			<?php endforeach; ?>
 			<tr>
-				<td>Total TTC</td>
+				<td><strong>Total TTC</strong></td>
 				<td></td>
 				<td></td>
-				<td><?= $totalTTC ?>€</td>
+				<td></td>
+				<td><strong><?= number_format($totalTTC * $tva, 2, ',', '.'); ?>€</strong></td>
 			</tr>
 		</tbody>
 	</table>
@@ -54,4 +34,3 @@ include '../includes/header.php'; ?>
 			<small>Si vous ne réglez pas sous 10 jours, le prix de votre commande sera majorée.(25%/jours de retard)</small>
 		</p>
 </section>
-<?php include '../includes/footer.php'; ?>

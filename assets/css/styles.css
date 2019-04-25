@@ -1,12 +1,14 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Raleway");
 body {
   /* HEADER */
-  font-family: 'Raleway', sans-serif;
   /*FIN HEADER 
   DEBUT HOME */
   /* FIN HOME
   PAGE BOUTIQUES */
+  /*FIN BOUTIQUE
+  	PURCHASE_ORDER */
+  /* FIN PURCHASE_ORDER
+  	CONFIRMATION DE COMMANDE */
   /*FOOTER */ }
   body .titreduhaut {
     text-align: center; }
@@ -81,8 +83,20 @@ body {
     text-align: justify; }
   body #boutiques .bieres .price {
     text-align: right; }
+  body #formPurchase .form label {
+    display: block; }
+  body #formPurchase .form input {
+    width: 100%;
+    border: 1px solid black; }
+  body #commandSection table {
+    width: 100%; }
+    body #commandSection table tr th {
+      font-family: initial; }
+    body #commandSection table tr td {
+      text-align: center; }
   body footer {
-    background-color: #2196F3; }
+    background-color: #2196F3;
+    line-height: 20px; }
     body footer nav ul {
       list-style: none;
       display: flex;
@@ -138,7 +152,20 @@ body {
       #boutiques .bieres p {
         width: 80% !important; }
 
-  /* FOOTER */
+  /* PURCHASE_ORDER */
+  #formPurchase {
+    width: 33%;
+    margin-top: 5%;
+    margin-left: 33%;
+    margin-bottom: 5%; }
+    #formPurchase .form_row {
+      display: flex;
+      justify-content: space-between; }
+    #formPurchase table {
+      width: 100%; }
+
+  /* FIN PURCHASE_ORDER
+   FOOTER */
   footer {
     height: 5vh;
     display: flex;

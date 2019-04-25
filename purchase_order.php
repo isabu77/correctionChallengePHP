@@ -1,6 +1,7 @@
 <?php require_once('ressources/donnees.php');
 		include 'includes/header.php'; ?>
-	<form method="post" action="/includes/confirmationCommande.php">
+
+	<form method="post" action="/includes/calculPrice.php" id="formPurchase">
 		<div class="form_row">
 			<div class="form">
 				<label>NOM</label>
