@@ -1,3 +1,6 @@
+<?php
+require_once 'function.php';
+?>
 	<footer>
 		<nav>
 			<ul>
@@ -6,6 +9,6 @@
 			</ul>
 		</nav>
 	</footer>
-	<script type="text/javascript" src="/assets/js/script.js"></script>
+	<script type="text/javascript" src="<?= uri("assets/js/script.js") ?>"></script>
 </body>
 </html>

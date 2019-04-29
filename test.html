@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<script type="text/javascript">
+	function select(){
+		var html ='';
+
+		var cp = inputcp.value;
+		for (var i = 0; i < tabvilles[cp].length; i++) {
+		html += "<option value=\""+tabvilles[cp][i]+"\">"+tabvilles[cp][i]+"</option>";
+		}
+		ville.innerHTML = html;
+
+	}
+	</script>
+</head>
+<body>
+	<input type="text" name="codepostal" id="codepostal">
+	<select name="ville" id="ville" onclick="select()">
+		
+	</select>
+<script type="text/javascript">
+	
+var tabvilles = { "03000": ["moulins", "avermes"], "03400": ["montluçon"]};
+var ville = document.getElementById('ville');
+var inputcp = document.getElementById('codepostal');
+// 
+
+
+
+</script>
+</body>
+</html>
+
+
+
