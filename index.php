@@ -1,7 +1,14 @@
 <?php 
-include 'includes/header.php';
 require_once 'includes/function.php';
 
+if(isset($_GET["deconnect"])){
+	if (session_status() != PHP_SESSION_ACTIVE){
+	session_start();
+	}
+	unset($_SESSION["auth"]);
+}
+
+include 'includes/header.php';
 ?>
 	<section class="sectionHome">
 		<h1>Bread Beer Shop</h1>

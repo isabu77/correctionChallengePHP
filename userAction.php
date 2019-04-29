@@ -94,18 +94,18 @@ require 'includes/header.php';
 
 echo 	'<h1>Inscription</h1>'.
 		'<form method="POST" name="inscription" action="">'.
- 		input("lastname", "votre nom").
- 		input("firstname", "votre prénom").
- 		input("address", "votre adresse").
- 		input("zipCode", "votre code postal").
- 		input("city", "votre ville").
- 		input("country", "votre pays").
- 		input("phone", "votre numéro de portable", "tel").
-  		input("mail", "votre courriel", "email").
-  		input("mailVerify", "vérification de votre courriel", "email").
-  		input("password", "votre mot de passe", "password").
-  		input("passwordVerify", "confirmez votre mot de passe", "password").
-  		input("robot", "", "hidden").
+ 		input("lastname", "votre nom","").
+ 		input("firstname", "votre prénom","").
+ 		input("address", "votre adresse","").
+ 		input("zipCode", "votre code postal","").
+ 		input("city", "votre ville","").
+ 		input("country", "votre pays","").
+ 		input("phone", "votre numéro de portable","", "tel").
+  		input("mail", "votre courriel","", "email").
+  		input("mailVerify", "vérification de votre courriel","", "email").
+  		input("password", "votre mot de passe","", "password").
+  		input("passwordVerify", "confirmez votre mot de passe","", "password").
+  		input("robot", "","", "hidden").
   		"<button type=\"submit\">Envoyez</button>".
   		'</form>';
 
@@ -118,3 +118,6 @@ echo 	'<h1>Inscription</h1>'.
 
 
 require 'includes/footer.php';
+
+
+

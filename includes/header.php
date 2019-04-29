@@ -1,5 +1,6 @@
 <?php
 require_once 'function.php';
+$connect = userOnly(true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,13 @@ require_once 'function.php';
 				<li><a href="<?= uri() ?>">Home</a></li>
 				<li><a href="<?= uri("boutique.php") ?>">Boutique</a></li>
 				<li><a href="<?= uri("purchase_order.php") ?>">Bon de commande</a></li>
-				<li><a href="#">A propos</a></li>
+				<?php if($connect): ?>
+
+					<li><a href="<?= uri("profil.php") ?>">profil</a></li>
+					<li><a href="<?= uri("index.php?deconnect") ?>">deconnexion</a></li>
+				<?php else: ?>
+				<li><a href="<?= uri("login.php") ?>">Connexion</a></li>
+				<?php endif; ?> 
 				<li><a href="#">Contact</a></li>
 			</ul>
 		</nav>

@@ -27,7 +27,17 @@ function getDB(	$dbuser='root',
 
 	$dsn = 'mysql:dbname='.$dbname.';host='.$dbhost.';charset=UTF8';
 	try {
-    	return new PDO($dsn, $dbuser, $dbpassword);
+    	$pdo = new PDO($dsn, $dbuser, $dbpassword);
+
+    	//definit mode de recupération en mode tableau associatif
+    	// $user["lastname"];
+    	$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    	//definit mode de recupération en mode Objet
+    	//$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+    	// $user->lastname;
+    	return $pdo;
+
 	} catch (PDOException $e) {
     	echo 'Connexion échouée : ' . $e->getMessage();
     	die();
@@ -40,13 +50,13 @@ function getDB(	$dbuser='root',
 *	@return String
 */
 
-function input($name, $label, $type='text', $require=false)//:string
+function input($name, $label,$value="", $type='text', $require=false)//:string
 {
 	$input = "<div class=\"form-group\"><label for=\"".
 	$name."\">".$label.
 	"</label><input id=\"".
 	$name."\" type=\"".$type.
-	"\" name=\"".$name."\" value=\"\" ";
+	"\" name=\"".$name."\" value=\"".$value."\" ";
 	$input .= ($require)? "required": "";
 	$input .= "></div>";
 
@@ -55,10 +65,10 @@ function input($name, $label, $type='text', $require=false)//:string
 
 /**
 * Connect le client
-* @return void
+* @return boolean|void
 */
-function userConnect($mail, $password){//:void
-	require_once 'config.php';
+function userConnect($mail, $password, $verify=false){//:boolean|void
+	require 'config.php';
 
 	$sql = "SELECT * FROM users WHERE `mail`= ?";
 	$pdo = getDB($dbuser, $dbpassword, $dbhost,$dbname);
@@ -66,31 +76,62 @@ function userConnect($mail, $password){//:void
 		$statement = $pdo->prepare($sql);
 		$statement->execute([htmlspecialchars($mail)]);
 		$user = $statement->fetch();
-		
 		if(	$user && 
 			password_verify(
 			htmlspecialchars($password), $user['password']
 		)){
+				if($verify){
+					return true;
+					//exit();
+				}
+
 				if (session_status() != PHP_SESSION_ACTIVE){
 					session_start();
 				}
 				unset($user['password']);
 				$_SESSION['auth'] = $user;
-				var_dump($_SESSION);
-				die();
-				//header('location: profil.php');
 				//connecté
+				header('location: profil.php');
+				exit();
 
 		}else{
+
+			if($verify){
+				return false;
+				//exit();
+			}
 			if (session_status() != PHP_SESSION_ACTIVE){
 					session_start();
 				}
 			$_SESSION['auth'] = false;
 			header('location: login.php');
-			//pas connecté
+			//TODO : err pas connecté
 		}
+
 }
-	
+
+
+
+/**
+* verifie que l'utilisateur est connecté
+* @return array|void
+*/
+function userOnly($verify=false){//:array|void|boolean
+	if (session_status() != PHP_SESSION_ACTIVE){
+		session_start();
+	}
+	//. est pas defini et false
+	if(!$_SESSION["auth"]){
+		if($verify){
+			return false;
+		//exit();
+		}
+		header('location: login.php');
+		exit();
+	}
+	return $_SESSION["auth"];
+}
+
 
 
 
