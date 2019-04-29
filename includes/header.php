@@ -17,9 +17,8 @@ $connect = userOnly(true);
 			<ul>
 				<li><a href="<?= uri() ?>">Home</a></li>
 				<li><a href="<?= uri("boutique.php") ?>">Boutique</a></li>
-				<li><a href="<?= uri("purchase_order.php") ?>">Bon de commande</a></li>
 				<?php if($connect): ?>
-
+					<li><a href="<?= uri("purchase_order.php") ?>">Bon de commande</a></li>
 					<li><a href="<?= uri("profil.php") ?>">profil</a></li>
 					<li><a href="<?= uri("index.php?deconnect") ?>">deconnexion</a></li>
 				<?php else: ?>

@@ -24,6 +24,7 @@ function getDB(	$dbuser='root',
 				$dbhost='localhost',
 				$dbname='sitebeer') //:\PDO
 {
+	
 
 	$dsn = 'mysql:dbname='.$dbname.';host='.$dbhost.';charset=UTF8';
 	try {
@@ -50,7 +51,7 @@ function getDB(	$dbuser='root',
 *	@return String
 */
 
-function input($name, $label,$value="", $type='text', $require=false)//:string
+function input($name, $label,$value="", $type='text', $require=true)//:string
 {
 	$input = "<div class=\"form-group\"><label for=\"".
 	$name."\">".$label.
@@ -120,7 +121,7 @@ function userOnly($verify=false){//:array|void|boolean
 	if (session_status() != PHP_SESSION_ACTIVE){
 		session_start();
 	}
-	//. est pas defini et false
+	// est pas defini et false
 	if(!$_SESSION["auth"]){
 		if($verify){
 			return false;

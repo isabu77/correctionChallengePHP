@@ -45,11 +45,16 @@ if(!empty($_POST)){
 	*/
 }
 
-
+$pdo = getDB($dbuser, $dbpassword, $dbhost,$dbname);
+$sql = "SELECT * FROM orders WHERE id_user = ?";
+$statement = $pdo->prepare($sql);
+$statement->execute([$user["id_user"]]);
+$orders = $statement->fetchAll();
 require 'includes/header.php';
 
-echo 	'<h1>Profil</h1>'.
-		'<hr /><form method="POST" name="inscription" action="">'.
+echo 	'<h1>Profil</h1>';
+
+echo	'<hr /><form method="POST" name="inscription" action="">'.
  		input("lastname", "votre nom",$user["lastname"]).
  		input("firstname", "votre prénom",$user["firstname"]).
  		input("address", "votre adresse",$user["address"]).
@@ -69,8 +74,11 @@ echo 	'<form method="POST" name="inscription" action="">'.
   		input("passwordVerify", "confirmez votre mot de passe","", "password").
   		input("robot", "","", "hidden").
   		"<button type=\"submit\">Envoyez</button>".
-  		'</form>';
+  		'</form><hr />';
 
-
+//tableau des commandes
+foreach ($orders as $order) {
+	echo '<a href="'.uri("confirmationDeCommande.php?id=").$order["id"].'">commande n°'.$order["id"].'- '.$order["priceTTC"].'€ </a><br />';
+}
 
 require 'includes/footer.php';
