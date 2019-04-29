@@ -53,6 +53,45 @@ function input($name, $label, $type='text', $require=false)//:string
 	return $input;
 }
 
+/**
+* Connect le client
+* @return void
+*/
+function userConnect($mail, $password){//:void
+	require_once 'config.php';
+
+	$sql = "SELECT * FROM users WHERE `mail`= ?";
+	$pdo = getDB($dbuser, $dbpassword, $dbhost,$dbname);
+
+		$statement = $pdo->prepare($sql);
+		$statement->execute([htmlspecialchars($mail)]);
+		$user = $statement->fetch();
+		
+		if(	$user && 
+			password_verify(
+			htmlspecialchars($password), $user['password']
+		)){
+				if (session_status() != PHP_SESSION_ACTIVE){
+					session_start();
+				}
+				unset($user['password']);
+				$_SESSION['auth'] = $user;
+				var_dump($_SESSION);
+				die();
+				//header('location: profil.php');
+				//connecté
+
+		}else{
+			if (session_status() != PHP_SESSION_ACTIVE){
+					session_start();
+				}
+			$_SESSION['auth'] = false;
+			header('location: login.php');
+			//pas connecté
+		}
+}
+	
+
 
 
 
