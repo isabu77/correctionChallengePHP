@@ -8,9 +8,13 @@ require_once 'config.php';
 */
 function uri($cible="")//:string
 {
-	$uri = "http://".$_SERVER['HTTP_HOST'];
-	$folder = basename(dirname(dirname(__FILE__)));
-	return $uri.'/'.$folder.'/'.$cible;
+	global $racine; //Permet de récupérer une variable externe à la fonction
+	$uri = "http://".$_SERVER['HTTP_HOST']; 
+	$folder = "";
+	if(!$racine) {
+		$folder = basename(dirname(dirname(__FILE__))).'/'; //Dossier courant
+	}
+	return $uri.'/'.$folder.$cible;
 }
 
 
