@@ -22,11 +22,11 @@ if(!empty($_POST)){
 require 'includes/header.php';
 
 echo 	'<h1>login</h1>'.
-		'<form method="POST" name="inscription" action="">'.
+		'<form method="POST" name="inscription" action="" class="formProfil">'.
   		input("mail", "votre courriel","", "email").
   		input("password", "votre mot de passe","", "password").
   		input("robot", "","", "hidden").
-  		"<button type=\"submit\">Envoyez</button>".
+  		"<button type=\"submit\">Envoyer</button>".
   		'</form>';
 
 

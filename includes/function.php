@@ -126,7 +126,7 @@ function userOnly($verify=false){//:array|void|boolean
 		session_start();
 	}
 	// est pas defini et false
-	if(!$_SESSION["auth"]){
+	if(!isset($_SESSION["auth"]) || !$_SESSION["auth"]){
 		if($verify){
 			return false;
 		//exit();

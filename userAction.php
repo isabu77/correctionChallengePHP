@@ -93,7 +93,7 @@ if(!empty($_POST)){
 require 'includes/header.php';
 
 echo 	'<h1>Inscription</h1>'.
-		'<form method="POST" name="inscription" action="">'.
+		'<form method="POST" name="inscription" action="" class="formProfil">'.
  		input("lastname", "votre nom","").
  		input("firstname", "votre prénom","").
  		input("address", "votre adresse","").
@@ -106,7 +106,7 @@ echo 	'<h1>Inscription</h1>'.
   		input("password", "votre mot de passe","", "password").
   		input("passwordVerify", "confirmez votre mot de passe","", "password").
   		input("robot", "","", "hidden").
-  		"<button type=\"submit\">Envoyez</button>".
+  		"<button type=\"submit\">Envoyer</button>".
   		'</form>';
 
 

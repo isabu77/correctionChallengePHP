@@ -26,7 +26,7 @@ body {
 			}
 			&:checked {
 				&+ nav {
-					height: calc(100vh - 50px);
+					height: initial;
 					opacity: 0.9;
 				}
 				&:before {
@@ -42,18 +42,18 @@ body {
 			overflow:hidden;
 			text-transform:uppercase;
 			transition:height .2s;
-			width: 100%;
+			width: 70%;
 			& > * {
 				display: block;
 				letter-spacing: 1px;
 				padding: 0 20px;
-				width: 100%;
+				width: 70%;
 				font-size: 4vw;
 			}
 			ul {
 				list-style-type: none;
 				li {
-					text-align: center;
+					text-align: left;
 					a {
 						color: #FFFFFF;
 						text-decoration: none;
@@ -110,14 +110,84 @@ body {
 		PURCHASE_ORDER */
 
 	#formPurchase {
-		.form {
+		padding: 5px;
+		background-color: #AED581;
+		table {
+			width: 100%;
+			tr {
+				th {
+					font-family: initial;
+				}
+				td {
+					text-align: center;
+					input{
+						width: 30%;
+						margin-bottom: 5px;
+						padding: 5px;
+						color : #333;
+						border: 1px solid #ccc;
+						border-radius: 5px;
+						outline: 0;
+
+					}
+				}
+			}
+		}
+		button{
+		    width: 40%;
+		    margin-top: 2%;
+		    margin-left: 60%;
+		    margin-bottom: 2%;
+			font-weight: bold;
+			text-transform: uppercase;
+			background-color: #AED581;
+		}
+	.form {
+		label {
+			display: block;
+		}
+		input {
+			width: 90%;
+		    margin-left: 1px;
+			margin-bottom: 5px;
+			padding: 5px;
+			color : #333;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			outline: 0;
+		}
+
+		}
+	}
+
+   /* FIN  PURCHASE_ORDER
+    PROFIL */
+	.formProfil {
+		padding: 5px;
+		background-color: #AED581;
+		button{
+			font-weight: bold;
+			text-transform: uppercase;
+				background-color: #AED581;
+		    width: 40%;
+		    margin-top: 2%;
+		    margin-left: 60%;
+		    margin-bottom: 2%;
+		}
+		.form-group {
 			label {
 				display: block;
 			}
 			input {
-				width: 100%;
-				border: 1px solid black;
+				width: 98%;
+				margin-bottom: 5px;
+				padding: 5px;
+				color : #333;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				outline: 0;
 			}
+
 		}
 	}
 

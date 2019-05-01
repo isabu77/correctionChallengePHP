@@ -1,5 +1,13 @@
 <?php
-	require_once('ressources/donnees.php');
+require_once('includes/function.php');
+	//require_once('ressources/donnees.php');
+	$sql = "SELECT * FROM `beer`";
+	$pdo = getDB($dbuser, $dbpassword, $dbhost,$dbname);
+	$statement = $pdo->prepare($sql);
+	$statement->execute(); 
+
+	$beerArray = $statement->fetchAll();
+
 	include 'includes/header.php';
 ?>
 
@@ -7,10 +15,10 @@
 <section id="boutiques">
 	<?php foreach($beerArray as $value) : ?>
 		<article class="bieres">
-			<h2><?= $value[0]; ?></h2>
-			<div><img src="<?= $value[1]; ?>" alt="<?= $value[0]; ?>" /></div>
-			<p><?= $value[2]; ?></p>
-			<p class="price"><?= $value[3]; ?></p>
+			<h2><?= $value['title']; ?></h2>
+			<div><img src="<?= $value['img']; ?>" alt="<?= $value['title']; ?>" /></div>
+			<p><?= $value['content']; ?></p>
+			<p class="price"><?=    (String)number_format($value['price']*$tva,2,',',' ').'€'; ?></p>
 		</article>
 	<?php endforeach; ?>
 </section>

@@ -65,19 +65,49 @@
   /* PURCHASE_ORDER */
 
   #formPurchase {
-    width: 33%;
+    width: 60%;
     margin-top: 5%;
-    margin-left: 33%;
+    margin-left: 20%;
     margin-bottom: 5%;
     .form_row {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
     }
     table {
       width: 100%;
     }
   }
-  /* FIN PURCHASE_ORDER
+
+   /* FIN  PURCHASE_ORDER
+    PROFIL */
+
+  .formProfil {
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-bottom: 5%;
+    .form-group {
+      display: flex;
+      justify-content: space-between;
+      label {
+        width: 40%;
+        display: inline-block;
+      }
+      input {
+        width: 55%;
+        margin-bottom: 5px;
+        padding: 5px;
+        color : #333;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: 0;
+      }
+    }
+    table {
+      width: 100%;
+    }
+  }
+   /* FIN PURCHASE_ORDER
    FOOTER */
   footer {
     height: 5vh;

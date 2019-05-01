@@ -3,7 +3,7 @@ require_once 'includes/function.php';
 
 if(isset($_GET["deconnect"])){
 	if (session_status() != PHP_SESSION_ACTIVE){
-	session_start();
+		session_start();
 	}
 	unset($_SESSION["auth"]);
 }

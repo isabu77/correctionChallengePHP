@@ -12,7 +12,7 @@ $beerArray = $statement->fetchAll();
 
 include 'includes/header.php'; 
 ?>
-
+	<h1>Bon de Commande</h1><hr />
 	<form method="POST" action="<?= uri("calculPrice.php") ?>" id="formPurchase">
 		<div class="form_row">
 			<div class="form">

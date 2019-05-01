@@ -106,7 +106,7 @@ if(isset($_SESSION['error'])) {
 	unset($_SESSION["error"]); //Supprime la SESSION['error']
 }
 
-echo	'<hr /><form method="POST" name="inscription" action="">'.
+echo	'<hr /><form method="POST" name="inscription" action="" class="formProfil">'.
  		input("lastname", "votre nom",$user["lastname"]).
  		input("firstname", "votre prénom",$user["firstname"]).
  		input("address", "votre adresse",$user["address"]).
@@ -120,7 +120,7 @@ echo	'<hr /><form method="POST" name="inscription" action="">'.
   		"<button type=\"submit\">Envoyez</button>".
   		'</form><hr />';
 
-echo 	'<form method="POST" name="inscription" action="">'.
+echo 	'<form method="POST" name="inscription" action="" class="formProfil">'.
   		input("passwordOld", "votre ancien mot de passe","", "password").
   		input("password", "votre mot de passe","", "password").
   		input("passwordVerify", "confirmez votre mot de passe","", "password").
