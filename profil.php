@@ -117,7 +117,7 @@ echo	'<hr /><form method="POST" name="inscription" action="" class="formProfil">
   		"votre courriel : ".$user["mail"].
   		input("robot", "","", "hidden").
   		input("id_user", "",$user["id_user"], "hidden").
-  		"<button type=\"submit\">Envoyez</button>".
+  		"<button type=\"submit\">Envoyer</button>".
   		'</form><hr />';
 
 echo 	'<form method="POST" name="inscription" action="" class="formProfil">'.
@@ -125,7 +125,7 @@ echo 	'<form method="POST" name="inscription" action="" class="formProfil">'.
   		input("password", "votre mot de passe","", "password").
   		input("passwordVerify", "confirmez votre mot de passe","", "password").
   		input("robot", "","", "hidden").
-  		"<button type=\"submit\">Envoyez</button>".
+  		"<button type=\"submit\">Envoyer</button>".
   		'</form><hr />';
 
 //tableau des commandes

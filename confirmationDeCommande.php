@@ -13,9 +13,11 @@
 	$statement = $pdo->prepare($sql);
 	$statement->execute([$id]);
 	$order = $statement->fetch();
-
-	if(!$order || $order['id_user'] != $user["id_user"]) { //On vérifie l'id de l'utilisateur
-		header('location: '.uri("profil.php"));				//Et l'existence de la commande
+	if(!$order || 						//On vérifie l'existence de la commande
+		$order['id_user'] != $user["id_user"]  || //On vérifie l'id de l'utilisateur
+		$order['priceTTC'] == 0 //On vérifie si commande vide
+	){ 
+		header('location: '.uri("profil.php"));	
 		exit();
 	}
 
@@ -29,7 +31,7 @@
 	}
 	//var_dump($beers);die;
 
-	$lines = unserialize($order['ids_product']); //Rétablis le tableau à sa forme originale
+	$lines = unserialize($order['ids_product']); //Rétablit le tableau à sa forme originale
 	$priceTTC = 0;
 	foreach( $lines as $line) {
 		$priceTTC += ($line["price"] * $line["qty"]) * $tva;

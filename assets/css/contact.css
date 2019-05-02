@@ -1,0 +1,37 @@
+#contact{
+	font-family:Geneva, Arial, Helvetica, sans-serif; 
+	margin:0; 
+	padding:0; 
+	font-size:.88em;
+	width:772px; 
+	margin:0 auto; 
+	padding:0;
+}
+#contact.textarea{ width:772px; }  
+
+#contact.label{ 
+	display:block; 
+	font-weight:bold; 
+}  
+#contact.p#welcome{ 
+	padding:10px 20px; 
+	border:1px dotted #00f; 
+	color:#00f; 
+	font-weight:bold; 
+}  
+#contact.ul{ 
+
+	padding:10px 20px; 
+	border:1px dotted #f00; 
+	color:#f00; 
+	font-weight:bold; 
+}  
+#contact.p#success{ 
+	padding:10px 20px; 
+	border:1px dotted #0f0; 
+	color:#0f0; 
+	font-weight:bold; }  
+#contact.p em{ 
+	display:block; 
+	font-weight:normal; }  
+    

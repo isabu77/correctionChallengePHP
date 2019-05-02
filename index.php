@@ -17,35 +17,17 @@ include 'includes/header.php';
 			<div>
 				<img src="<?= uri("assets/img/BAP.jpg") ?>" alt="BAP logo">
 			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br />
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Gros producteur de bières, j'ai créé ma propre bière spéciale : "du pain dur à la bière".<br />
+			Lancée dans un village en Allemagne, "Stuttgart la rieuse". Dans un rayon de 10 km, les boulangeries nous fournissent le pain dur et font la promotion de cette bière.<br />
+			La bière au pain est seulement disponible par contact email, à 15 € les 50 cl. <br /> 
+			</p>
 		</article>
 		<article class="articleHome">
 			<div>
 				<img src="<?= uri("assets/img/BAP.jpg") ?>" alt="BAP logo">
 			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br />
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>OFFRE EXCEPTIONNELLE de LANCEMENT :<br /> 3 bières offertes pour une bière achetée.<br />
+			</p>
 		</article>
 	</section>
 <?php include 'includes/footer.php'; ?>

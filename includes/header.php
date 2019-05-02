@@ -9,6 +9,7 @@ $connect = userOnly(true);
 	<meta name="viewport" content="width=device-width">
 	<title>Bread Beer Shop</title>
 	<link rel="stylesheet" type="text/css" href="<?= uri("assets/css/styles.css") ?>">
+	<link rel="stylesheet" type="text/css" href="<?= uri("assets/css/contact.css") ?>">
 </head>
 <body>
 	<header class="menu">
@@ -25,7 +26,7 @@ $connect = userOnly(true);
 					<li><a href="<?= uri("login.php") ?>">Connexion</a></li>
 				<?php endif; ?> 
 				<li><a href="<?= uri("userAction.php") ?>">Inscription</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="<?= uri("contact.php") ?>">Contact</a></li>
 			</ul>
 		</nav>
 	</header>
