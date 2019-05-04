@@ -1,17 +1,11 @@
 <?php
 require_once 'includes/function.php';
 
-
 // foreach ($_POST as $key => $value) {
 // 	$$key = $value;
-//  c'est égale a :
+//  c'est égal à :
 //  $lastname = $value;
 // }
-
-
-
-
-
 if(!empty($_POST)){
 	if(	isset($_POST["lastname"]) && !empty($_POST["lastname"]) &&
 		isset($_POST["firstname"]) && !empty($_POST["firstname"]) &&
@@ -108,14 +102,6 @@ echo 	'<h1>Inscription</h1>'.
   		input("robot", "","", "hidden").
   		"<button type=\"submit\">Envoyer</button>".
   		'</form>';
-
-
-
-
-
-
-
-
 
 require 'includes/footer.php';
 

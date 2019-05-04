@@ -1,8 +1,6 @@
 <?php
 require_once 'includes/function.php';
 
-
-
 if(!empty($_POST)){
 	if(	isset($_POST["mail"]) && !empty($_POST["mail"]) &&
 		isset($_POST["password"]) && !empty($_POST["password"]) &&
@@ -15,10 +13,6 @@ if(!empty($_POST)){
 	}
 }
 
-
-
-
-
 require 'includes/header.php';
 
 echo 	'<h1>login</h1>'.
@@ -28,13 +22,5 @@ echo 	'<h1>login</h1>'.
   		input("robot", "","", "hidden").
   		"<button type=\"submit\">Envoyer</button>".
   		'</form>';
-
-
-
-
-
-
-
-
 
 require 'includes/footer.php';

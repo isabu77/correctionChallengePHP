@@ -25,7 +25,7 @@ if(!empty($_POST)){
 				$_SESSION['success'] = 'Votre mot de passe a bien été modifié';
 			}else{
 				//mdp correspondent pas
-				$_SESSION['error'] = 'Les deux mots de passes ne correspondent pas.';
+				$_SESSION['error'] = 'Les deux mots de passe ne correspondent pas.';
 			}
 		}else{
 			//erreur 
