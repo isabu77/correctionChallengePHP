@@ -89,9 +89,12 @@ $sql = "SELECT * FROM orders WHERE id_user = ?";
 $statement = $pdo->prepare($sql);
 $statement->execute([$user["id_user"]]);
 $orders = $statement->fetchAll();
-require 'includes/header.php';
 
-echo 	'<h1>Profil</h1>';
+if (!isset($_GET["p"])){
+	require 'includes/header.php';
+}
+
+echo 	'<h1 class="titreduhaut">Bread Beer Shop - Profil</h1>';
 
 if(isset($_SESSION['success'])) {
 	echo '<div style="background-color: lightgreen; text-align: center;">
@@ -133,4 +136,6 @@ foreach ($orders as $order) {
 	echo '<a href="'.uri("confirmationDeCommande.php?id=").$order["id"].'">commande n°'.$order["id"].'- '.number_format($order["priceTTC"], 2, ',' ,'.').'€ </a><br />';
 }
 
-require 'includes/footer.php';
+if (!isset($_GET["p"])){
+	require 'includes/footer.php';
+}

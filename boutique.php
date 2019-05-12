@@ -8,10 +8,10 @@ require_once('includes/function.php');
 
 	$beerArray = $statement->fetchAll();
 
-	include 'includes/header.php';
+//	include 'includes/header.php';
 ?>
 
-<h1 class="titreduhaut">Nos Produits</h1>
+<h1 class="titreduhaut">Bread Beer Shop - Nos Produits</h1>
 <section id="boutiques">
 	<?php foreach($beerArray as $value) : ?>
 		<article class="bieres">
@@ -24,4 +24,4 @@ require_once('includes/function.php');
 </section>
 
 <?php
-	include 'includes/footer.php'; 
+//	include 'includes/footer.php'; 

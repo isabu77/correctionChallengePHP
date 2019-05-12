@@ -109,7 +109,7 @@ function userConnect($mail, $password, $verify=false){//:boolean|void
 					session_start();
 				}
 			$_SESSION['auth'] = false;
-			header('location: login.php');
+			header('location: ?p=login');
 			//TODO : err pas connecté
 		}
 
@@ -125,13 +125,13 @@ function userOnly($verify=false){//:array|void|boolean
 	if (session_status() != PHP_SESSION_ACTIVE){
 		session_start();
 	}
-	// est pas defini et false
+	// n'est pas defini et false
 	if(!isset($_SESSION["auth"]) || !$_SESSION["auth"]){
 		if($verify){
 			return false;
 		//exit();
 		}
-		header('location: login.php');
+		header('location: userForm.php');
 		exit();
 	}
 	return $_SESSION["auth"];

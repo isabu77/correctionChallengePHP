@@ -55,12 +55,11 @@
         $object = MAIL_OBJECT;  
         $message = MAIL_MESSAGE;  
     }  
-include 'includes/header.php';
+//include 'includes/header.php';
 ?>  
   
+<h1 class="titreduhaut">Bread Beer Shop - Contact</h1>  
 <section id="contact">
-        <h1>Bread Beer Shop - Contact</h1>  
-        <hr />  
 <?php  
     if( $mailSent === true ) // si le message a bien été envoyé, on affiche le récapitulatif  
     {  
@@ -109,4 +108,3 @@ include 'includes/header.php';
     }  
 ?>  
 </section>
-<?php include 'includes/footer.php'; ?>

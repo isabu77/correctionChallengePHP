@@ -9,10 +9,9 @@ $statement->execute();
 
 $beerArray = $statement->fetchAll();
 
-
-include 'includes/header.php'; 
+//include 'includes/header.php'; 
 ?>
-	<h1>Bon de Commande</h1><hr />
+	<h1 class="titreduhaut">Bread Beer Shop - Bon de Commande</h1><hr />
 	<form method="POST" action="<?= uri("calculPrice.php") ?>" id="formPurchase">
 		<div class="form_row">
 			<div class="form">
@@ -75,4 +74,3 @@ include 'includes/header.php';
 		<button type="submit">COMMANDER</button>
 	</form>
 
-<?php include 'includes/footer.php'; ?>

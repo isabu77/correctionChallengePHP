@@ -43,7 +43,7 @@
 	}
 	include 'includes/header.php';
 ?>
-<h1 class="titreduhaut">Confirmation de commande</h1>
+<h1 class="titreduhaut">Bread Beer Shop - Confirmation de commande</h1>
 <section id="commandSection">
 	<table>
 		<thead>
