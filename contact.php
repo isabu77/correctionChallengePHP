@@ -1,5 +1,6 @@
 <?php  
-    define( 'MAIL_TO', /* >>>>> */'isabu77@gmail.com'/* <<<<< */ );  //ajouter votre courriel  
+require 'config.php';
+    define( 'MAIL_TO', /* >>>>> */$gmailUser/* <<<<< */ );  //ajouter votre courriel  
     define( 'MAIL_FROM', '' ); // valeur par défaut  
     define( 'MAIL_OBJECT', 'objet du message' ); // valeur par défaut  
     define( 'MAIL_MESSAGE', 'votre message' ); // valeur par défaut  
