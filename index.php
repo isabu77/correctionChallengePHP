@@ -2,7 +2,7 @@
 require_once 'includes/function.php';
 
 // inscription ou connexion ?
-if(!empty($_POST)){
+if(!empty($_POST) || (!empty($_GET) && isset($_GET["verify"])) ){
 	require 'userAction.php';
 }
 
@@ -18,12 +18,20 @@ if(!isset($_GET["p"])){
 		unset($_SESSION["auth"]);
 	}
 	include 'includes/header.php';
+	if(isset($_SESSION['success'])) {
+		displayFlashMessage("", $_SESSION['success'], "");
+		unset($_SESSION["success"]); //Supprime la SESSION['success']
+	}
+	if(isset($_SESSION['error'])) {
+		displayFlashMessage("", "", $_SESSION['error']);
+		unset($_SESSION["error"]); //Supprime la SESSION['success']
+	}
 	// mini router des pages
 	switch($page){
 		case 'login':
 		case 'register':
 		case 'reset':
-			include 'userForm.php'; 
+			require 'userForm.php'; 
 			break;
 		case 'boutique':
 			require 'boutique.php';

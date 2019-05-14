@@ -32,6 +32,8 @@ un tableau qui récapitule les bières commandées, les frais de port (5.40 € 
 
 ## - "Déconnexion" déconnecte l'utilisateur et affiche la page "Identification"
 
-## - "Inscription" permet de saisir ses coordonnées, son adresse mail et son mot de passe pour s'inscrire', et connecte l'utilisateur pour faire apparaitre "Bon de commande", "Profil" et "Déconnexion"
+## - "Inscription" permet de saisir ses coordonnées, son adresse mail et son mot de passe pour s'inscrire', envoie un mail de confirmation pour valider l'inscription.
+
+## - la validation de l'inscription affiche la page de connexion
 
 ## Contact affiche un formulaire de contact

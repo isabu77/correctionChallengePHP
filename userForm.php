@@ -1,7 +1,12 @@
-<h1 class="titreduhaut">Bread Beer Shop - <?= ($page == 'login') ? "Connexion" : "Inscription" ?></h1>
-<form method='POST' name="<?= $page?>" action="" class="formProfil">
-
+<h1 class="titreduhaut"><?= ($page == 'login') ? "Connexion" : ($page == 'register' ? "Inscription" : "Réinitialisation du mot de passe")?></h1>
 <?php
+if ($page == 'reset'){
+	echo '<p>Pour récupérer votre compte, saisissez votre adresse mail de connexion pour recevoir votre mot de passe</p>';
+}
+?>
+<form method='POST' name="<?= $page?>" action="" class="formProfil">
+<?php
+
 	echo input("mail", "votre courriel","", "email");
 
 if ($page == 'login'){

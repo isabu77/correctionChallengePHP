@@ -96,6 +96,9 @@ if (!isset($_GET["p"])){
 
 echo 	'<h1 class="titreduhaut">Bread Beer Shop - Profil</h1>';
 
+if (session_status() != PHP_SESSION_ACTIVE){
+	session_start();
+}
 if(isset($_SESSION['success'])) {
 	echo '<div style="background-color: lightgreen; text-align: center;">
 			'.$_SESSION["success"].'
