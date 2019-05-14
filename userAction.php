@@ -240,7 +240,7 @@
 
 						    if( $mailSent === true ) // si le message a bien été envoyé, on affiche le récapitulatif  
 						    {  
-						 
+						 		$_SESSION['success'] = 'Votre message a bien été envoyé.';
 							    echo    '<p id="success">Votre message a bien été envoyé.</p>  ';
 							    echo    '<p><strong>Courriel pour la réponse :</strong><br />' . $from . '</p>';  
 							    echo    '<p><strong>Objet :</strong><br />' . $object . '</p>'  ;
@@ -259,7 +259,8 @@
 						        }  
 						        else  
 						        {  
-						            echo( "\t\t<p id=\"welcome\"><em>Tous les champs sont obligatoires</em></p>\n" );  
+						        	$_SESSION['error'] = "\t\t<p id=\"welcome\"><em>Tous les champs sont obligatoires</em></p>\n";
+						            /*echo( "\t\t<p id=\"welcome\"><em>Tous les champs sont obligatoires</em></p>\n" );  */
 						        } 
 						    } 
 						}else{
