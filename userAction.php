@@ -1,6 +1,9 @@
 <?php
-//====================================================================== INSCRIPTION avec CONFIRMATION par mail
 
+if (session_status() != PHP_SESSION_ACTIVE){
+	session_start();
+}
+//====================================================================== INSCRIPTION avec CONFIRMATION par mail
 	if(	isset($_POST["lastname"]) && !empty($_POST["lastname"]) &&
 		isset($_POST["firstname"]) && !empty($_POST["firstname"]) &&
 		isset($_POST["address"]) && !empty($_POST["address"]) &&
@@ -158,9 +161,6 @@
 					);
 					$user = $statement->fetch();
 					if ($user){
-						if (session_status() != PHP_SESSION_ACTIVE){
-							session_start();
-						}
 						if ($user["token"] == $_GET["token"] &&
 							$user["dateverify"] == $_GET["createdAt"]
 							){
@@ -186,25 +186,26 @@
 					}
 
 				}
-//====================================================================== RIEN
+//====================================================================== CONTACT
 				else
-					if ( isset($_POST["send"]) && !empty($_POST["send"]) &&
-						isset($_POST["from"]) && !empty($_POST["from"]) &&
-						isset($_POST["object"]) && !empty($_POST["object"]) &&
-						isset($_POST["message"]) && !empty($_POST["message"] )
+					if ( isset($_POST["send"]) &&
+						isset($_POST["from"]) &&
+						isset($_POST["object"]) &&
+						isset($_POST["message"])  
 						){
-						    define( 'MAIL_TO', /* >>>>> */$gmailUser/* <<<<< */ );  //ajouter votre courriel  
+						    define( 'MAIL_TO', $gmailUser);  
 						    define( 'MAIL_FROM', '' ); // valeur par défaut  
 						    define( 'MAIL_OBJECT', 'objet du message' ); // valeur par défaut  
 						    define( 'MAIL_MESSAGE', 'votre message' ); // valeur par défaut  
 
 						    $mailSent = false; // drapeau qui aiguille l'affichage du formulaire OU du récapitulatif  
 						    $errors = array(); // tableau des erreurs de saisie  
-
+							// si le courriel fourni est vide OU égale à la valeur par défaut  
 					        $from = filter_input( INPUT_POST, 'from', FILTER_VALIDATE_EMAIL );  
-					        if( $from === NULL || $from === MAIL_FROM ) // si le courriel fourni est vide OU égale à la valeur par défaut  
+					        if( $from === NULL || $from === MAIL_FROM ) 
 					        {  
 					            $errors[] = 'Vous devez renseigner votre adresse de courrier électronique.';  
+						 		$_SESSION['error'] = 'Vous devez renseigner votre adresse de courrier électronique.';
 					        }  
 					        elseif( $from === false ) // si le courriel fourni n'est pas valide  
 					        {  
@@ -219,15 +220,17 @@
 					        }  
 
 					        $message = filter_input( INPUT_POST, 'message', FILTER_UNSAFE_RAW );  
-					        if( $message === NULL OR $message === false OR empty( $message ) OR $message === MAIL_MESSAGE ) // si le message fourni est vide ou égal à la valeur par défaut  
+					        // si le message fourni est vide ou égal à la valeur par défaut  
+					        if( $message === NULL OR $message === false OR empty( $message ) OR $message === MAIL_MESSAGE ) 
 					        {  
 					            $errors[] = 'Vous devez écrire un message.';  
 					        }  
 
 					        if( count( $errors ) === 0 ) // si il n'y a pas d'erreur  
 					        {  
+					        	// tentative d'envoi du message  
 					            if(sendMail(MAIL_TO, $object, $message)){
-					            //if( mail( MAIL_TO, $object, $message, "From: $from\nReply-to: $from\n" ) ) // tentative d'envoi du message  
+					            //if( mail( MAIL_TO, $object, $message, "From: $from\nReply-to: $from\n" ) ) 
 					              
 					                $mailSent = true;  
 					 
@@ -256,18 +259,22 @@
 						                echo( "\t\t\t<li>$error</li>\n" );  
 						            }  
 						            echo( "\t\t</ul>\n" );  
+						 			$_SESSION['error'] = 'il y a des erreurs.';
 						        }  
 						        else  
 						        {  
-						        	$_SESSION['error'] = "\t\t<p id=\"welcome\"><em>Tous les champs sont obligatoires</em></p>\n";
+						        	$_SESSION['error'] = "Tous les champs sont obligatoires...";
 						            /*echo( "\t\t<p id=\"welcome\"><em>Tous les champs sont obligatoires</em></p>\n" );  */
 						        } 
 						    } 
+		              		//header('location: ?p=contact');
+//====================================================================== RIEN
 						}else{
+						    $_SESSION['error'] = "userAction bac à sable";
 
 							// si rien
 							//die('userAction bac à sable');
-		              		 header('location: ?p=home');
+		              		// header('location: ?p=home');
 						}
 
 //require 'includes/footer.php';
