@@ -1,7 +1,7 @@
 <?php 
 require_once 'includes/function.php';
 
-// inscription ou connexion ?
+// inscription ou connexion ? userAction traite aussi le contact et le reset de mdp
 if(!empty($_POST) || (!empty($_GET) && isset($_GET["verify"])) ){
 	require 'userAction.php';
 }
@@ -10,22 +10,39 @@ if(!isset($_GET["p"])){
 	header('location:?p=home');
 	exit();
 }else{
+	// quelle page faut-il afficher ?
 	$page= htmlspecialchars(strtolower($_GET['p']));
+
+	if (session_status() != PHP_SESSION_ACTIVE){
+		session_start();
+	}
+	// on teste le deconnect avant d'afficher le header 
+	// car le contenu du menu dépend de la connexion 
 	if ($page == 'deconnect'){
-		if (session_status() != PHP_SESSION_ACTIVE){
-			session_start();
-		}
 		unset($_SESSION["auth"]);
 	}
+	// inclusion du HEADER contenant le MENU
 	include 'includes/header.php';
-	if(isset($_SESSION['success'])) {
-		displayFlashMessage("", $_SESSION['success'], "");
-		unset($_SESSION["success"]); //Supprime la SESSION['success']
-	}
+
+	// affichage des messages FLASH définis dans userAction sous le header
+	$erreurs = "";
+	$succes = "";
 	if(isset($_SESSION['error'])) {
-		displayFlashMessage("", "", $_SESSION['error']);
+		$erreurs = $_SESSION['error'];
+		if (is_array($_SESSION['error'])){
+			$erreurs = implode(' ', $_SESSION['error']);
+		}
 		unset($_SESSION["error"]); //Supprime la SESSION['success']
 	}
+	if(isset($_SESSION['success'])) {
+		$succes = $_SESSION['success'];
+		if (is_array($_SESSION['success'])){
+			$succes = implode(' ', $_SESSION['success']);
+		}
+		unset($_SESSION["success"]); //Supprime la SESSION['success']
+	}
+	displayFlashMessage("", $succes, $erreurs);
+	
 	// mini router des pages
 	switch($page){
 		case 'login':

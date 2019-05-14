@@ -198,8 +198,10 @@ if (session_status() != PHP_SESSION_ACTIVE){
 						    define( 'MAIL_OBJECT', 'objet du message' ); // valeur par défaut  
 						    define( 'MAIL_MESSAGE', 'votre message' ); // valeur par défaut  
 
-						    $mailSent = false; // drapeau qui aiguille l'affichage du formulaire OU du récapitulatif  
-						    $errors = array(); // tableau des erreurs de saisie  
+						    // drapeau qui aiguille l'affichage du formulaire OU du récapitulatif  
+						    $mailSent = false; 
+						    // tableau des erreurs de saisie  
+						    $errors = array(); 
 							// si le courriel fourni est vide OU égale à la valeur par défaut  
 					        $from = filter_input( INPUT_POST, 'from', FILTER_VALIDATE_EMAIL );  
 					        if( $from === NULL || $from === MAIL_FROM ) 
@@ -214,7 +216,8 @@ if (session_status() != PHP_SESSION_ACTIVE){
 					        }  
 
 					        $object = filter_input( INPUT_POST, 'object', FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_HIGH | FILTER_FLAG_ENCODE_LOW );  
-					        if( $object === NULL OR $object === false OR empty( $object ) OR $object === MAIL_OBJECT ) // si l'objet fourni est vide, invalide ou égale à la valeur par défaut  
+					        // si l'objet fourni est vide, invalide ou égale à la valeur par défaut  
+					        if( $object === NULL OR $object === false OR empty( $object ) OR $object === MAIL_OBJECT ) 
 					        {  
 					            $errors[] = 'Vous devez renseigner l\'objet.';  
 					        }  
@@ -241,38 +244,27 @@ if (session_status() != PHP_SESSION_ACTIVE){
 					            }  
 					        }  
 
-						    if( $mailSent === true ) // si le message a bien été envoyé, on affiche le récapitulatif  
+						    // si le message a bien été envoyé, on affiche le récapitulatif  
+						    if( $mailSent === true ) 
 						    {  
-						 		$_SESSION['success'] = 'Votre message a bien été envoyé.';
-							    echo    '<p id="success">Votre message a bien été envoyé.</p>  ';
-							    echo    '<p><strong>Courriel pour la réponse :</strong><br />' . $from . '</p>';  
-							    echo    '<p><strong>Objet :</strong><br />' . $object . '</p>'  ;
-							    echo    '<p><strong>Message :</strong><br />' . nl2br( htmlspecialchars( $message ) ) . '</p>';  
+						 		$_SESSION['success'] = 'Votre message a bien été envoyé. Courriel pour la réponse :' . $from . '. Objet : ' . $object . '. Message : '. nl2br( htmlspecialchars( $message ) ) ;
 						    }  
-						    else // le formulaire est affiché pour la première fois ou le formulaire a été soumis mais contenait des erreurs  
+						    else 
+						    // le formulaire est affiché pour la première fois ou le formulaire a été soumis mais contenait des erreurs  
 						    {  
 						        if( count( $errors ) !== 0 )  
 						        {  
-						            echo( "\t\t<ul>\n" );  
-						            foreach( $errors as $error )  
-						            {  
-						                echo( "\t\t\t<li>$error</li>\n" );  
-						            }  
-						            echo( "\t\t</ul>\n" );  
-						 			$_SESSION['error'] = 'il y a des erreurs.';
+						 			$_SESSION['error'] = $errors;
 						        }  
 						        else  
 						        {  
 						        	$_SESSION['error'] = "Tous les champs sont obligatoires...";
-						            /*echo( "\t\t<p id=\"welcome\"><em>Tous les champs sont obligatoires</em></p>\n" );  */
 						        } 
 						    } 
 		              		//header('location: ?p=contact');
 //====================================================================== RIEN
 						}else{
 						    $_SESSION['error'] = "userAction bac à sable";
-
-							// si rien
 							//die('userAction bac à sable');
 		              		// header('location: ?p=home');
 						}

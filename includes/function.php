@@ -11,7 +11,8 @@ date_default_timezone_set('Europe/Paris');
 */
 function uri($cible="")//:string
 {
-	global $racine; //Permet de récupérer une variable externe à la fonction  $_SERVER['HTTP_X_FORWARDED_PROTO']
+	global $racine; //Permet de récupérer une variable externe à la fonction  
+	// avec DECKER : remplacer "http://" par $_SERVER['HTTP_X_FORWARDED_PROTO'] . '://'
 	$uri = "http://" . $_SERVER['HTTP_HOST']; 
 	$folder = "";
 	if(!$racine) {
@@ -81,42 +82,46 @@ function userConnect($mail, $password = "", $verify=false){//:boolean|void
 	if (session_status() != PHP_SESSION_ACTIVE){
 		session_start();
 	}
+
 	$sql = "SELECT * FROM users WHERE `mail`= ?";
 	$pdo = getDB($dbuser, $dbpassword, $dbhost,$dbname);
 
-		$statement = $pdo->prepare($sql);
-		$statement->execute([htmlspecialchars($mail)]);
-		$user = $statement->fetch();
-		if(	$user && !empty($password) &&
-			$user['verify'] == true &&
-			password_verify(htmlspecialchars($password), $user['password'])
-		){
-			if($verify){
-				return true;
-				//exit();
-			}
-
-			unset($user['password']);
-			$_SESSION['auth'] = $user;
-			//connecté
-			header('location: profil.php');
-			exit();
-
-		}else{
-
-			if($verify){
-				return false;
-				//exit();
-			}
-			$_SESSION['auth'] = false;
-
-			if ($user['verify'] == false)
-			{
-				$_SESSION['error'] = "Votre inscription n'est pas validée, veuillez recommencer.";
-				header('location: ?p=login');
-			}
-			//TODO : err pas connecté
+	$statement = $pdo->prepare($sql);
+	$statement->execute([htmlspecialchars($mail)]);
+	$user = $statement->fetch();
+	if(	$user && !empty($password) &&
+		$user['verify'] == true &&
+		password_verify(htmlspecialchars($password), $user['password'])
+	){
+		if($verify){
+			return true;
+			//exit();
 		}
+
+		unset($user['password']);
+		$_SESSION['auth'] = $user;
+		//connecté
+		header('location: profil.php');
+		exit();
+
+	}else{
+
+		if($verify){
+			return false;
+			//exit();
+		}
+
+		$_SESSION['auth'] = false;
+
+		//on continue sur index.php avec affichage erreur pas connecté
+		if ($user && $user['verify'] == false)
+		{
+			$_SESSION['error'] = "Votre inscription n'est pas validée, veuillez recommencer.";
+		}
+		else{
+    		$_SESSION['error'] = "Adresse mail ou mot de passe invalide";
+		}
+	}
 
 }
 
@@ -142,8 +147,11 @@ function userOnly($verify=false){//:array|void|boolean
 	return $_SESSION["auth"];
 }
 
-/* envoi d'un mail par swift_mailer */
-function sendMail($emailTo, $sujet, $msg, $cci = true)
+/**
+* envoi d'un mail par swift_mailer 
+* @return int nb de mails envoyés
+*/
+function sendMail($emailTo, $sujet, $msg, $cci = true)//:int
 {
 require 'config.php';
 
@@ -219,8 +227,11 @@ require 'config.php';
 
 }
 
-// afficher un message FLASH :
-function displayFlashMessage($info, $succes = "", $erreur = ""){
+/**
+* afficher un message FLASH  
+* @return void
+*/
+function displayFlashMessage($info = "", $succes = "", $erreur = ""){
 
 	// php-flash-messages fonctionne avec bootstrap !!
 	// Start a Session
@@ -247,15 +258,18 @@ function displayFlashMessage($info, $succes = "", $erreur = ""){
 
 }
 
-
-function RandomString($lg)
+/**
+* créer une chaine "token" 
+* @return string
+*/
+function RandomString($lg = 24)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $randstring = [];
+    $randstring = "";
     for ($i = 0; $i < $lg; $i++) {
-        $randstring[$i] = $characters[rand(0, strlen($characters))];
+        $randstring .= $characters[mt_rand(0, strlen($characters)-1)];
     }
-    return implode('', $randstring);
+    return ($randstring);
 }
 
 
