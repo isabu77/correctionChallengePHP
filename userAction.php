@@ -82,13 +82,19 @@ if (session_status() != PHP_SESSION_ACTIVE){
 					$user = $statement->fetch();
 					if ($user){
 						// envoyer le mail de confirmation
-						$texte = "Pour confirmer votre inscription au site 'Beer Shop', veuillez cliquer sur le lien suivant : ";
+						$texte = ["html" => '<h1>Bienvenue sur notre site Beer Shop</h1><p>Pour activer votre compte, veuillez cliquer sur le lien ci-dessous ou copier/coller dans votre navigateur internet:</p><br /><a href="http://localhost/correctionChallengePHPdev/?p=verify&id=' . $user["id_user"]
+						. "&token=" . $token
+						. "&createdAt=".$dateverify
+						. "&verify=".$verify
+						. '">Cliquez ICI pour valider votre compte</a><hr><p>Ceci est un mail automatique, Merci de ne pas y répondre.</p>'];
+
+/*						$texte = "Pour confirmer votre inscription au site 'Beer Shop', veuillez cliquer sur le lien suivant : ";
 						$texte .= "http://localhost/correctionChallengePHPdev/?p=verify";
 						$texte .= "&id=" . $user['id_user'];
 						$texte .= "&token=" . $token;
 						$texte .= "&createdAt=".$dateverify;
 						$texte .= "&verify=".$verify;
-						$res = sendMail($_POST["mail"], "Confirmation Inscription Beer Shop",  $texte);
+*/						$res = sendMail($_POST["mail"], "Confirmation Inscription Beer Shop",  $texte);
 						if ($res){
 							displayFlashMessage("Veuillez confirmer votre inscription en cliquant sur le lien qui vous a été envoyé par mail", "", "");
 						}

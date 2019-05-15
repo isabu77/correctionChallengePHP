@@ -34,6 +34,9 @@ un tableau qui récapitule les bières commandées, les frais de port (5.40 € 
 
 ## - "Inscription" permet de saisir ses coordonnées, son adresse mail et son mot de passe pour s'inscrire', envoie un mail de confirmation pour valider l'inscription.
 
-## - la validation de l'inscription affiche la page de connexion
+## - La validation de l'inscription affiche la page de connexion
 
-## Contact affiche un formulaire de contact
+## - Contact affiche un formulaire de contact
+
+## ![Algorithme du site](algo.jpg "Algorithme du site")
+

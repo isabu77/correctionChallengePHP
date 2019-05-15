@@ -153,7 +153,7 @@ function userOnly($verify=false){//:array|void|boolean
 */
 function sendMail($emailTo, $sujet, $msg, $cci = true)//:int
 {
-require 'config.php';
+	require 'config.php';
 
 	$mailTo = $emailTo;
 	if (!is_array($emailTo)){
@@ -168,9 +168,9 @@ require 'config.php';
 	// Crée le Mailer utilisant le Transport
 	$mailer = new Swift_Mailer($transport);
 
-	// Crée le message en HTML
+	// Crée le message en HTML et texte
 	$message = new Swift_Message($sujet);
-	$message->setFrom([$gmailUser => "Isabu77"]);
+	$message->setFrom([$gmailUser => $pseudo]);
 
 	if ($cci){
 		$message->setBcc($mailTo);
@@ -178,53 +178,24 @@ require 'config.php';
 		$message->setTo([$mailTo]);
 	}
 	
-/*	if (is_array($msg) && array_key_exists('text', $msg) && array_key_exists('html', $msg)){
-			$message->setBody($msg['html'] ,'text/html' );
-			$message->addPart($msg['text'] ,'text/plain' );
+	if (is_array($msg) && array_key_exists('text', $msg) && array_key_exists('html', $msg)){
+		$message->setBody($msg['html'] ,'text/html' );
+		$message->addPart($msg['text'] ,'text/plain' );
 	}else if ( is_array($msg) && array_key_exists('html', $msg)){
+		$message->setBody($msg["html"], 'text/html');
+		$message->addPart($msg["html"], 'text/plain');
+	}elseif (is_array($msg) && array_key_exists("text", $msg)) {
+		$message->setBody($msg["text"], 'text/plain');
 
-	}
-*/
-	if (!is_array($msg)){
-		$message->setBody($msg ,'text/plain');
-		$message->addPart('<html>' .
-				' <body>' .
-				$msg .
-				' </body>' .
-				'</html>',
-				  'text/html' );
+	}elseif (is_array($msg)) {
+		die('erreur une clé n\'est pas bonne');
+
 	}else{
-		if (array_key_exists('text', $msg)){
-			$message->setBody($msg['text'] ,'text/plain' );
-		}
-		if (array_key_exists('html', $msg)){
-			$message->addPart($msg['html'] ,'text/html' );
-		}
+		$message->setBody($msg, 'text/plain');
 	}
 
-	// en copie :
-/*	if (!empty($emailCc)){
-		if (!is_array($emailCc)){
-			$message->setCc([$emailCc]);
-		}else{
-			$message->setCc($emailCc);
-		}
-	}
-*/
-	// en copie cachée :
-/*	if (!empty($emailCci)){
-		if (!is_array($emailCci)){
-			$message->setBcc([$emailCci]);
-		}else{
-			$message->setBcc($emailCci);
-		}
-	}
-*/
 	// envoie le message
-	$result = $mailer->send($message);
-
-	return($result);
-
+	return($mailer->send($message));
 }
 
 /**
