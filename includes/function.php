@@ -12,7 +12,7 @@ date_default_timezone_set('Europe/Paris');
 function uri($cible="")//:string
 {
 	global $racine; //Permet de récupérer une variable externe à la fonction  
-	// avec DECKER : remplacer "http://" par $_SERVER['HTTP_X_FORWARDED_PROTO'] . '://'
+	// avec DOCKER : remplacer "http://" par $_SERVER['HTTP_X_FORWARDED_PROTO'] . '://'
 	$uri = "http://" . $_SERVER['HTTP_HOST']; 
 	$folder = "";
 	if(!$racine) {
@@ -151,7 +151,7 @@ function userOnly($verify=false){//:array|void|boolean
 * envoi d'un mail par swift_mailer 
 * @return int nb de mails envoyés
 */
-function sendMail($emailTo, $sujet, $msg, $cci = true)//:int
+function sendMail($emailTo, $sujet, $msg, $cci = true, $from="")//:int
 {
 	require 'config.php';
 
@@ -175,7 +175,7 @@ function sendMail($emailTo, $sujet, $msg, $cci = true)//:int
 	if ($cci){
 		$message->setBcc($mailTo);
 	}else{
-		$message->setTo([$mailTo]);
+		$message->setTo($mailTo);
 	}
 	
 	if (is_array($msg) && array_key_exists('text', $msg) && array_key_exists('html', $msg)){
@@ -192,6 +192,14 @@ function sendMail($emailTo, $sujet, $msg, $cci = true)//:int
 
 	}else{
 		$message->setBody($msg, 'text/plain');
+	}
+
+	if (!empty($from)){
+		// ajouter un Header
+		$headers = $message->getHeaders();
+		// "From: $from\nReply-to: $from\n"
+		$headers->addMailboxHeader('From', [$from]);
+		$headers->addMailboxHeader('Reply-to', [$from]);
 	}
 
 	// envoie le message

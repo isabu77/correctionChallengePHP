@@ -1,37 +1,59 @@
 #contact{
 	font-family:Geneva, Arial, Helvetica, sans-serif; 
-	margin:0; 
-	padding:0; 
+    background-color: #AED581;
 	font-size:.88em;
-	width:772px; 
-	margin:0 auto; 
-	padding:0;
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-bottom: 2%;
 }
-#contact.textarea{ width:772px; }  
-
-#contact.label{ 
+#contact h1{ 
+	color: black!important;
 	display:block; 
 	font-weight:bold; 
 }  
-#contact.p#welcome{ 
+#contact label{ 
+	display:block; 
+	font-weight:bold; 
+	padding:2px;
+}  
+#contact input{ 
+	margin:20px; 
+    width: 80%;
+}  
+#contact textarea{ 
+	margin:20px; 
+    width: 80%;
+}  
+#contact .bouton{ 
+	display:flex;
+	flex-direction:row;
+	padding:0;
+	margin-top:0;
+   width: 40%;
+
+}  
+
+#contact p#welcome{ 
 	padding:10px 20px; 
 	border:1px dotted #00f; 
 	color:#00f; 
 	font-weight:bold; 
 }  
-#contact.ul{ 
-
+#contact ul{ 
 	padding:10px 20px; 
 	border:1px dotted #f00; 
 	color:#f00; 
 	font-weight:bold; 
 }  
-#contact.p#success{ 
+#contact p#success{ 
 	padding:10px 20px; 
 	border:1px dotted #0f0; 
 	color:#0f0; 
-	font-weight:bold; }  
-#contact.p em{ 
+	font-weight:bold; 
+}  
+#contact p em{ 
 	display:block; 
-	font-weight:normal; }  
+	font-weight:normal; 
+}  
     

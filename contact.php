@@ -1,6 +1,6 @@
 <h1 class="titreduhaut">Bread Beer Shop - Contact</h1>  
 <section id="contact">
-        <form id='contact' method="post" action="">  
+        <form id='contactForm' method="post" action="" class="formProfil">  
             <p>  
                 <label for="from">Courriel pour la réponse</label>  
                 <input type="text" name="from" id="from"  />  
@@ -13,7 +13,7 @@
                 <label for="message">Message</label>  
                 <textarea name="message" id="message" rows="20" cols="80"></textarea>  
             </p>  
-            <p>  
+            <p class=bouton>  
                 <input type="reset" name="reset" value="Effacer" />  
                 <input type="submit" name="send" value="Envoyer" />  
             </p>  

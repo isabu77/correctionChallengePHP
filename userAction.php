@@ -238,7 +238,7 @@ if (session_status() != PHP_SESSION_ACTIVE){
 					        if( count( $errors ) === 0 ) // si il n'y a pas d'erreur  
 					        {  
 					        	// tentative d'envoi du message  
-					            if(sendMail(MAIL_TO, $object, $message)){
+					            if(sendMail(MAIL_TO, $object, $message, false, $from)){
 					            //if( mail( MAIL_TO, $object, $message, "From: $from\nReply-to: $from\n" ) ) 
 					              
 					                $mailSent = true;  
